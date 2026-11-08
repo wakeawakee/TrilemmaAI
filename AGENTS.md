@@ -49,13 +49,12 @@ Edit in `site/js/config.js` → `services` (group, name, summary, tags). Rendere
   Contact items render into the footer "Contact" column only (`[data-contact]`). The user does NOT want them repeated
   in the "Tell us what you're building" contact section: that section is heading, text and form only.
 - Final service wording → `site/js/config.js` → `services`.
-- **Forms are not sending yet** (they answer 503 "Email is not configured yet"). Chosen path (user, 2026-11-08):
-  GitHub repo https://github.com/wakeawakee/TrilemmaAI → Vercel (user's account) with Nodemailer + Gmail.
-  Needs: the user pushes the first commit (this machine has no GitHub credentials), imports the repo in Vercel and
-  sets env `GMAIL_APP_PASSWORD` (16-letter Google App Password of atrilemma@gmail.com). Cloudflare alternative:
-  `RESEND_API_KEY` secret on both Pages projects (Resend account made with atrilemma@gmail.com).
-  The user rejected waiting; FormSubmit was tried and dropped (relay of CVs blocked as data exfiltration by the auto-mode
-  classifier; server-side calls got HTTP 429 from Cloudflare's shared IPs).
+- **Forms WORK (2026-11-08)** on both Pages projects via Resend (`RESEND_API_KEY` secret set; account made with
+  atrilemma@gmail.com; sender `onboarding@resend.dev`, which only delivers to that address). Google refused to create
+  a Gmail App Password ("couldn't verify it's you"), so the Gmail path (`GMAIL_APP_PASSWORD`) is unused for now.
+  With a custom domain: verify it in Resend and set `MAIL_FROM` (e.g. website@domain) so mail stops looking like a test.
+  Vercel/GitHub not needed (user's Vercel account has no projects; GitHub repo not pushed yet).
+- Custom domain: user may buy one; plan is Cloudflare Registrar → Pages → Custom domains, then update config `website`.
 
 ## Architecture
 
@@ -137,7 +136,7 @@ Rules:
 - [x] Browser QA desktop 1440 and mobile 390: 0 console errors, 0 CSP violations, no horizontal scroll, form works end to end
 - [x] Real contact details (email, phone). Socials still pending
 - [x] Static site deployed to Cloudflare Pages (preview URL, no custom domain yet)
-- [ ] Forms: Pages Function deployed; waiting on RESEND_API_KEY (see Pending)
+- [x] Forms send to atrilemma@gmail.com (Resend), live-tested enquiry + CV on both projects 2026-11-08
 
 ## Session log
 
