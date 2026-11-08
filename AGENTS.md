@@ -74,7 +74,9 @@ lib/contact.js        SHARED form handler: multipart POST, `kind`=enquiry|cv, va
                       hands one message to a `deliver` callback. To: MAIL_TO (default atrilemma@gmail.com), reply-to sender.
 api/contact.js        Vercel Function → lib/contact.js, Nodemailer + Gmail SMTP. Env: GMAIL_APP_PASSWORD (required),
                       GMAIL_USER, MAIL_TO. vercel.json = output dir `site` + the same headers as site/_headers.
-functions/api/contact.js  Cloudflare Pages Function → lib/contact.js, Resend. Env: RESEND_API_KEY, MAIL_FROM.
+functions/api/contact.js  Cloudflare Pages Function → lib/contact.js. Gmail SMTP via worker-mailer (port 465) when
+                      GMAIL_APP_PASSWORD is set (verified: reaches Gmail, fake password → 535), else Resend
+                      (RESEND_API_KEY), else 503. DEPLOYED on both Pages projects 2026-11-08; only the secret is missing.
 tests/contact.test.mjs    `npm test` (mailers stubbed). Never put tests inside functions/ or api/.
 backend/              OLD Express + Nodemailer version, not deployed; superseded (never inside site/)
   server.js           validation, rate limit, honeypot, header-injection stripping, optional Turnstile + CORS
