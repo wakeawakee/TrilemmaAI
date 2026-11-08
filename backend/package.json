@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "nodemailer": "^10.3.1"
+  },
+  "description": "Contact form backend for the TTI (Trilemma Tech Innovation) website: POST /api/contact, sent by email via SMTP (Nodemailer).",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "server.js",
+  "name": "tti-contact-backend",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test test.js"
+  },
+  "version": "1.0.0"
+}

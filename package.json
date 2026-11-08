@@ -1,0 +1,13 @@
+{
+  "name": "trilemma-web",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "test": "node --test tests/contact.test.mjs"
+  },
+  "dependencies": {
+    "motion": "^14.9.0",
+    "nodemailer": "^10.4.0"
+  }
+}

@@ -1,0 +1,6 @@
+# Vercel only needs site/ (static), api/ + lib/ (form function) and package*.json
+backend/
+functions/
+tests/
+.wrangler/
+site/_headers
