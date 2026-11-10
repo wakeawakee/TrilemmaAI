@@ -1,4 +1,4 @@
-# TTI website (Trilemma Tech Innovation)
+# Trilemma website
 
 - `site/` — the static website. Open `site/index.html`, or serve the folder (`npx serve site`).
   Edit content (contact details, socials, services) in `site/js/config.js` only.

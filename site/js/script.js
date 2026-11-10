@@ -1,4 +1,4 @@
-/* TTI site: renders js/config.js content, preloader, scroll motion, contact form. */
+/* Trilemma site: renders js/config.js content, preloader, scroll motion, contact form. */
 (function () {
   'use strict';
 
@@ -23,7 +23,7 @@
   var contact = SITE.contact || {};
   var services = SITE.services || [];
 
-  $$('[data-brand]').forEach(function (n) { n.textContent = (SITE.brand && SITE.brand.name) || 'TTI'; });
+  $$('[data-brand]').forEach(function (n) { n.textContent = (SITE.brand && SITE.brand.name) || 'Trilemma'; });
   $$('[data-year]').forEach(function (n) { n.textContent = new Date().getFullYear(); });
 
   var list = $('[data-services]');

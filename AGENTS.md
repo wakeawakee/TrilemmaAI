@@ -1,4 +1,4 @@
-# AGENTS.md — TTI agency website
+# AGENTS.md — Trilemma agency website
 
 Read this first. It is the handoff between agent sessions (desktop VS Code and phone via Claude remote control).
 Keep it current: when you finish a chunk of work, update **Status** and **Session log**.
@@ -16,20 +16,21 @@ Studied with REA on 2026-11-01. Their code, assets and copy are **not** copied.
 
 ## Brand
 
-- Emblem: three overlapping violet circles (AI · Cybersecurity · Software, the three domains) with the TTI letters in
+- Emblem: three overlapping violet circles (AI · Cybersecurity · Software, the three domains) with a single **T** in
   the centre where all three meet. Used for the preloader, nav logo and footer.
   Source: `<symbol id="tti-mark">` in `site/index.html` (viewBox `13 10.5 102 98`); standalone `site/assets/logo.svg`.
 - CSS/JS are served `max-age=0, must-revalidate` (see `_headers`) so deploys show immediately. A stale 1-day cache once
   hid the new hamburger on the user's phone.
-- Favicon (`site/assets/favicon.svg`): 3-circle Venn (AI · Cybersecurity · Software, the three domains) with the TTI mark
+- Favicon (`site/assets/favicon.svg`): 3-circle Venn (AI · Cybersecurity · Software, the three domains) with the T
   in the centre. Bump `?v=` on its `<link>` in index.html when it changes (assets are cached 7 days).
-- Full brand name: **Trilemma Tech Innovation**, acronym **TTI** (user renamed it from "Trilemma Tech Studio / TTS"
-  on 2026-11-01; keep it consistent everywhere). Set in `site/js/config.js` → `brand.name`;
-  shown under the TTI mark in the nav (`.brand-name`), footer name and footer legal line. The emblem letters are
-  T T I: shared top bar over both T's, then a separate uppercase I with top and bottom bars like a typed capital
-  (`M77 6H95M86 6V37M77 37H95`): its top edge lines up with the T bar, its bottom edge with the T stems, and it does
-  not touch the TT bar. Group `translate(39.6 51.4) scale(.52)`. The user tried a dotted lowercase i and preferred this.
-  Same in index.html symbol, favicon.svg and logo.svg; bump the favicon `?v=` when it changes.
+- Brand name: **Trilemma** (user renamed it on 2026-11-10 from "Trilemma Tech Innovation / TTI", earlier
+  "Trilemma Tech Studio / TTS"; keep it consistent everywhere). Set in `site/js/config.js` → `brand.name`;
+  shown under the mark in the nav (`.brand-name`), footer name, footer legal line, page title and og:title.
+  The giant footer wordmark stays "Trilemma AI" (`footerWordmark`, separate user choice).
+  Emblem letter (2026-11-10, user: "just a T in the middle"): one T, global coords, no transform:
+  `<g fill="none" stroke-width="6.5"><path d="M64 54V75"/><path d="M52 54H76"/></g>` (stem then bar, so the preloader
+  draws the stem first). Same in the index.html symbol (stroke currentColor, `pathLength="1"` per path), favicon.svg,
+  logo.svg and assets/brand/logo.svg; brand PNGs in assets/brand/ re-rendered to match. Bump the favicon `?v=` on change.
 - Studio statement (user-directed wording, keep): "We are innovators and engineers who build. For every project we
   assemble the specialists it actually needs, engineers, security testers, AI integration and automation experts, and
   we stay accountable from the first call to the final handover." Do not call the studio "small".
@@ -83,7 +84,7 @@ backend/              OLD Express + Nodemailer version, not deployed; superseded
 ```
 
 Motion system (keep it to this, do not add new effect types):
-1. **Preloader**: TTI mark draws itself, counter 000→100, panel slides up (~1.6 s). CSS fallback hides it at 4 s if JS fails.
+1. **Preloader**: the T mark draws itself, counter 000→100, panel slides up (~1.6 s). CSS fallback hides it at 4 s if JS fails.
 2. **Pinned scenes** (`[data-scene]`): JS sets `--p` (0→1) while the section is pinned; CSS maps it to opacity/transform.
    Hero: headline tilts away in 3D and fades, the background grid tilts back into a 3D floor (CSS perspective),
    "AI. Cybersecurity. Software." stands up into place. Studio: words light up one by one.
@@ -159,3 +160,6 @@ Rules:
 - 2026-11-08 (later): forms refactored into lib/contact.js + Vercel api/contact.js (Nodemailer/Gmail) + Cloudflare
   wrapper; vercel.json; package.json type=module + nodemailer; git repo initialised (1 commit on main, remote
   origin = github.com/wakeawakee/TrilemmaAI, NOT pushed: no credentials here). 7 tests pass; forms browser-tested.
+- 2026-11-10: Renamed to "Trilemma" everywhere (config, title, og:title, footer fallbacks, README); emblem now a single T
+  in the Venn centre (symbol, favicon v=6, logo.svgs, all brand PNGs re-rendered). Checked preloader/nav/footer at
+  1440 and 390: 0 errors. Local branch renamed main → master (user wants master on GitHub).

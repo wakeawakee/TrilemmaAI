@@ -4,7 +4,7 @@
  * Social and other links must start with https:// or they are ignored.
  */
 window.SITE = {
-  brand: { name: 'Trilemma Tech Innovation' },
+  brand: { name: 'Trilemma' },
   footerWordmark: 'Trilemma AI',   // giant name at the bottom of the footer
 
   contact: {
