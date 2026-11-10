@@ -11,7 +11,7 @@ window.SITE = {
     email: 'atrilemma@gmail.com',   // enquiries and CVs are emailed here too (MAIL_TO in functions/api/contact.js)
     phone: '+977 9848210450',
     location: 'Jhamsikhel, Lalitpur',
-    website: 'https://trilemma-tech-innovation.pages.dev', // swap for the custom domain when it is live
+    website: 'https://trilemmai.com',
   },
 
   socials: [

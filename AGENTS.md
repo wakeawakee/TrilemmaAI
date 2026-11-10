@@ -53,7 +53,11 @@ Edit in `site/js/config.js` → `services` (group, name, summary, tags). Rendere
   a Gmail App Password ("couldn't verify it's you"), so the Gmail path (`GMAIL_APP_PASSWORD`) is unused for now.
   With a custom domain: verify it in Resend and set `MAIL_FROM` (e.g. website@domain) so mail stops looking like a test.
   Vercel not needed (no projects there). GitHub: pushed to master (github.com/wakeawakee/TrilemmaAI), 2026-11-10.
-- Custom domain: user may buy one; plan is Cloudflare Registrar → Pages → Custom domains, then update config `website`.
+- Custom domain **trilemmai.com** (bought by the user on Cloudflare, 2026-11-10). config `website` already set to it.
+  Steps left: user adds trilemmai.com + www.trilemmai.com under the Pages project → Custom domains; once it serves,
+  set secret `CANONICAL_HOST=trilemmai.com` on BOTH Pages projects and redeploy → `functions/_middleware.js` 301s every
+  other host (*.pages.dev incl. old deployment links, tts-studio, www) to https://trilemmai.com. Then: verify the domain
+  in Resend and set `MAIL_FROM`, DNSSEC, Turnstile, WAF rate limit on /api/contact, rotate the Resend key (pasted in chat).
 
 ## Architecture
 
@@ -75,6 +79,7 @@ api/contact.js        Vercel Function → lib/contact.js, Nodemailer + Gmail SMT
 functions/api/contact.js  Cloudflare Pages Function → lib/contact.js, Resend (RESEND_API_KEY secret). Must stay free of npm
                       dependencies: the Git build has no build command, so node_modules is not installed (a worker-mailer
                       import broke the first Git build on 2026-11-10 and was removed).
+functions/_middleware.js  canonical-host redirect, active only when CANONICAL_HOST is set (see Pending).
 tests/contact.test.mjs    `npm test` (mailers stubbed). Never put tests inside functions/ or api/.
 backend/              OLD Express + Nodemailer version, not deployed; superseded (never inside site/)
   server.js           validation, rate limit, honeypot, header-injection stripping, optional Turnstile + CORS

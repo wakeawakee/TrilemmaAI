@@ -87,3 +87,14 @@ test('shared handler passes the CV bytes and reply-to to the mailer; mailer erro
   const fail = await handleContact(req(), {}, async () => { throw new Error('SMTP down'); });
   assert.equal(fail.status, 502);
 });
+
+test('middleware: redirects pages.dev and www to the canonical domain only when CANONICAL_HOST is set', async () => {
+  const { onRequest } = await import('../functions/_middleware.js');
+  const run = (url, env) => onRequest({ request: new Request(url), env, next: () => new Response('site') });
+  assert.equal(await (await run('https://trilemma-tech-innovation.pages.dev/', {})).text(), 'site');
+  const r = await run('https://abc123.tts-studio-5ew.pages.dev/assets/x.png?v=2', { CANONICAL_HOST: 'trilemmai.com' });
+  assert.equal(r.status, 301);
+  assert.equal(r.headers.get('Location'), 'https://trilemmai.com/assets/x.png?v=2');
+  assert.equal((await run('https://www.trilemmai.com/#x', { CANONICAL_HOST: 'trilemmai.com' })).status, 301);
+  assert.equal(await (await run('https://trilemmai.com/', { CANONICAL_HOST: 'trilemmai.com' })).text(), 'site');
+});
