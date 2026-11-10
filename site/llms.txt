@@ -1,0 +1,33 @@
+# Trilemma
+
+> Trilemma (also written Trilemma AI) is an independent technology studio in Jhamsikhel, Lalitpur, Nepal, specializing in AI, cybersecurity and software engineering. For every project it assembles the specialists the work needs (engineers, security testers, AI integration and automation experts) and stays accountable from the first call to the final handover.
+
+Website: https://www.trilemmai.com/
+Email: atrilemma@gmail.com
+Phone: +977 9848210450
+Location: Jhamsikhel, Lalitpur, Nepal (works with clients worldwide)
+
+## Services
+
+### Software
+- Web App Development: dashboards, portals and SaaS products with secure auth, clean APIs and an interface people enjoy using.
+- Web Design: brand-led websites that load fast, read clearly and turn visitors into enquiries.
+- App Development: iOS and Android apps, native or cross-platform, from first prototype to store release.
+
+### AI
+- AI Integration: put LLMs and machine learning to work inside your product and workflows, with evaluation built in.
+- Custom Chatbots: assistants trained on your docs and data for support, sales or internal knowledge, with clear guardrails.
+
+### Security
+- Penetration Testing: authorised, hands-on attacks on your apps, APIs and infrastructure, ending in a prioritised fix report.
+- Vulnerability Assessment: systematic scanning and review that maps your weak points, ranked by real risk, with a retest after fixes.
+
+## How a project works
+1. Discover: a focused call to understand the goal, the constraints and what success looks like.
+2. Scope: a written scope covering deliverables, timeline, price and the specialists doing the work.
+3. Build: short cycles with working demos, so progress is visible every week.
+4. Deliver and support: clean handover with documentation, access and training, plus security retests and support when needed.
+
+## Contact
+Start a project or book a demo through the form at https://www.trilemmai.com/#contact or email atrilemma@gmail.com.
+Careers: send a CV through https://www.trilemmai.com/#careers.

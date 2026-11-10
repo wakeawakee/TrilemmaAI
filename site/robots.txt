@@ -1,2 +1,6 @@
+# All search engines and AI assistants (Googlebot, Bingbot, GPTBot, ClaudeBot, PerplexityBot, Google-Extended…) may read the site.
 User-agent: *
 Allow: /
+Disallow: /api/
+
+Sitemap: https://www.trilemmai.com/sitemap.xml

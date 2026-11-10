@@ -11,7 +11,7 @@ window.SITE = {
     email: 'atrilemma@gmail.com',   // enquiries and CVs are emailed here too (MAIL_TO in functions/api/contact.js)
     phone: '+977 9848210450',
     location: 'Jhamsikhel, Lalitpur',
-    website: 'https://trilemmai.com',
+    website: 'https://www.trilemmai.com',
   },
 
   socials: [

@@ -55,7 +55,7 @@ Edit in `site/js/config.js` → `services` (group, name, summary, tags). Rendere
   Vercel not needed (no projects there). GitHub: pushed to master (github.com/wakeawakee/TrilemmaAI), 2026-11-10.
 - Custom domain **trilemmai.com** (bought by the user on Cloudflare, 2026-11-10). config `website` already set to it.
   Steps left: user adds trilemmai.com + www.trilemmai.com under the Pages project → Custom domains; once it serves,
-  set secret `CANONICAL_HOST=trilemmai.com` on BOTH Pages projects and redeploy → `functions/_middleware.js` 301s every
+  set secret `CANONICAL_HOST=www.trilemmai.com` (user chose www as the main address, 2026-11-10) on the Pages project and redeploy → `functions/_middleware.js` 301s every
   other host (*.pages.dev incl. old deployment links, tts-studio, www) to https://trilemmai.com. Then: verify the domain
   in Resend and set `MAIL_FROM`, DNSSEC, Turnstile, WAF rate limit on /api/contact, rotate the Resend key (pasted in chat).
 
@@ -70,7 +70,10 @@ site/                 ← the ONLY folder that gets published (Cloudflare Pages 
   assets/             logo.svg, favicon.svg
   assets/brand/       social-media downloads (profile 1080, transparent logos, LinkedIn/X banners), rendered from logo.svg
   _headers            Cloudflare Pages security headers (CSP, HSTS, frame-ancestors, etc.)
-  robots.txt
+  robots.txt          allows all crawlers incl. AI bots, blocks /api/, points to the sitemap
+  sitemap.xml         one URL: https://www.trilemmai.com/ (submit in Google Search Console; bump lastmod on big changes)
+  llms.txt            plain-text summary for AI assistants (GEO/AEO); keep services in sync with config.js
+  assets/og-image.png 1200x630 social share image
 lib/contact.js        SHARED form handler: multipart POST, `kind`=enquiry|cv, validation, CV (PDF/DOC/DOCX, ≤4 MB because
                       Vercel caps bodies at 4.5 MB, magic-byte checked), same-origin check, honeypot, optional Turnstile;
                       hands one message to a `deliver` callback. To: MAIL_TO (default atrilemma@gmail.com), reply-to sender.
@@ -170,3 +173,8 @@ Rules:
   in the Venn centre (symbol, favicon v=6, logo.svgs, all brand PNGs re-rendered). Checked preloader/nav/footer at
   1440 and 390: 0 errors. Local branch renamed main → master (user wants master on GitHub).
 - 2026-11-10 (later): removed the T from the emblem everywhere; brand PNGs re-rendered; deployed to both Pages projects.
+- 2026-11-10 (SEO): canonical https://www.trilemmai.com/, og/twitter tags + og-image, geo meta (NP-P3, Lalitpur),
+  schema.org JSON-LD (ProfessionalService with address/phone/email/7 services + WebSite) inline as a data block (not
+  executed, CSP fine, 0 errors); sitemap.xml, robots.txt Sitemap line, llms.txt. Services are duplicated in the JSON-LD
+  and llms.txt because crawlers (esp. AI) don't run config.js: keep them in sync. config website = www.trilemmai.com.
+  User asked to remove tts-studio: wrangler lost its login (needs `npx wrangler login`), so the user deletes it in the dashboard.
