@@ -72,9 +72,9 @@ lib/contact.js        SHARED form handler: multipart POST, `kind`=enquiry|cv, va
                       hands one message to a `deliver` callback. To: MAIL_TO (default atrilemma@gmail.com), reply-to sender.
 api/contact.js        Vercel Function → lib/contact.js, Nodemailer + Gmail SMTP. Env: GMAIL_APP_PASSWORD (required),
                       GMAIL_USER, MAIL_TO. vercel.json = output dir `site` + the same headers as site/_headers.
-functions/api/contact.js  Cloudflare Pages Function → lib/contact.js. Gmail SMTP via worker-mailer (port 465) when
-                      GMAIL_APP_PASSWORD is set (verified: reaches Gmail, fake password → 535), else Resend
-                      (RESEND_API_KEY), else 503. DEPLOYED on both Pages projects 2026-11-08; only the secret is missing.
+functions/api/contact.js  Cloudflare Pages Function → lib/contact.js, Resend (RESEND_API_KEY secret). Must stay free of npm
+                      dependencies: the Git build has no build command, so node_modules is not installed (a worker-mailer
+                      import broke the first Git build on 2026-11-10 and was removed).
 tests/contact.test.mjs    `npm test` (mailers stubbed). Never put tests inside functions/ or api/.
 backend/              OLD Express + Nodemailer version, not deployed; superseded (never inside site/)
   server.js           validation, rate limit, honeypot, header-injection stripping, optional Turnstile + CORS
@@ -113,6 +113,9 @@ Rules:
 
 ## Deploy
 
+- **CD (2026-11-10):** project `trilemma-tech-innovation` is connected to GitHub `wakeawakee/TrilemmaAI`, production
+  branch `master`, build command none, output `site`. Every push to master deploys automatically; other branches get
+  preview URLs. `RESEND_API_KEY` is a secret on the project. Only the user can push (no GitHub credentials here).
 - Static site: Cloudflare Pages, build command none, output directory `site`.
   **Live:** https://trilemma-tech-innovation.pages.dev (project `trilemma-tech-innovation`, account bistshree@gmail.com,
   direct upload, no git). The old project `tts-studio` (https://tts-studio-5ew.pages.dev) still exists with the same
