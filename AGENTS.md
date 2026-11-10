@@ -16,21 +16,19 @@ Studied with REA on 2026-11-01. Their code, assets and copy are **not** copied.
 
 ## Brand
 
-- Emblem: three overlapping violet circles (AI · Cybersecurity · Software, the three domains) with a single **T** in
-  the centre where all three meet. Used for the preloader, nav logo and footer.
+- Emblem: three overlapping violet circles (AI · Cybersecurity · Software, the three domains) with nothing in the
+  centre (no letters). Used for the preloader, nav logo and footer.
   Source: `<symbol id="tti-mark">` in `site/index.html` (viewBox `13 10.5 102 98`); standalone `site/assets/logo.svg`.
 - CSS/JS are served `max-age=0, must-revalidate` (see `_headers`) so deploys show immediately. A stale 1-day cache once
   hid the new hamburger on the user's phone.
-- Favicon (`site/assets/favicon.svg`): 3-circle Venn (AI · Cybersecurity · Software, the three domains) with the T
-  in the centre. Bump `?v=` on its `<link>` in index.html when it changes (assets are cached 7 days).
+- Favicon (`site/assets/favicon.svg`): 3-circle Venn (AI · Cybersecurity · Software, the three domains) (no letter). Bump `?v=` on its `<link>` in index.html when it changes (assets are cached 7 days).
 - Brand name: **Trilemma** (user renamed it on 2026-11-10 from "Trilemma Tech Innovation / TTI", earlier
   "Trilemma Tech Studio / TTS"; keep it consistent everywhere). Set in `site/js/config.js` → `brand.name`;
   shown under the mark in the nav (`.brand-name`), footer name, footer legal line, page title and og:title.
   The giant footer wordmark stays "Trilemma AI" (`footerWordmark`, separate user choice).
-  Emblem letter (2026-11-10, user: "just a T in the middle"): one T, global coords, no transform:
-  `<g fill="none" stroke-width="6.5"><path d="M64 54V75"/><path d="M52 54H76"/></g>` (stem then bar, so the preloader
-  draws the stem first). Same in the index.html symbol (stroke currentColor, `pathLength="1"` per path), favicon.svg,
-  logo.svg and assets/brand/logo.svg; brand PNGs in assets/brand/ re-rendered to match. Bump the favicon `?v=` on change.
+  Emblem has NO letter (2026-11-10, user: remove the T): just the three circles. Same in the index.html symbol,
+  favicon.svg (v=7), logo.svg and assets/brand/logo.svg; brand PNGs re-rendered (dark/light variants now identical).
+  History: TTI letters → single T → no letter.
 - Studio statement (user-directed wording, keep): "We are innovators and engineers who build. For every project we
   assemble the specialists it actually needs, engineers, security testers, AI integration and automation experts, and
   we stay accountable from the first call to the final handover." Do not call the studio "small".
@@ -54,7 +52,7 @@ Edit in `site/js/config.js` → `services` (group, name, summary, tags). Rendere
   atrilemma@gmail.com; sender `onboarding@resend.dev`, which only delivers to that address). Google refused to create
   a Gmail App Password ("couldn't verify it's you"), so the Gmail path (`GMAIL_APP_PASSWORD`) is unused for now.
   With a custom domain: verify it in Resend and set `MAIL_FROM` (e.g. website@domain) so mail stops looking like a test.
-  Vercel/GitHub not needed (user's Vercel account has no projects; GitHub repo not pushed yet).
+  Vercel not needed (no projects there). GitHub: pushed to master (github.com/wakeawakee/TrilemmaAI), 2026-11-10.
 - Custom domain: user may buy one; plan is Cloudflare Registrar → Pages → Custom domains, then update config `website`.
 
 ## Architecture
@@ -163,3 +161,4 @@ Rules:
 - 2026-11-10: Renamed to "Trilemma" everywhere (config, title, og:title, footer fallbacks, README); emblem now a single T
   in the Venn centre (symbol, favicon v=6, logo.svgs, all brand PNGs re-rendered). Checked preloader/nav/footer at
   1440 and 390: 0 errors. Local branch renamed main → master (user wants master on GitHub).
+- 2026-11-10 (later): removed the T from the emblem everywhere; brand PNGs re-rendered; deployed to both Pages projects.
